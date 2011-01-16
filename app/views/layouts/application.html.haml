@@ -13,10 +13,19 @@
             = link_to '', root_url
           #user_nav
             - unless user_signed_in?
-              %a{:href => '/auth/twitter'}= "Sign in"
+              %a{:href => new_user_session_url}= "Sign in"
 
         - [:notice, :warning, :error, :alert, :success].each do |f|
           - if flash[f]
             .flash{:class => f.to_s}= flash[f]
       .main
+        - if user_signed_in?
+          .user-details
+            .bio
+              #user_nav
+                =link_to current_user.email, edit_preferences_path
+                |
+                = link_to 'logout', destroy_user_session_path
+
+
         = yield

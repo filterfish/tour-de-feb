@@ -1,4 +1,4 @@
-%h1 Listing rides
+%h1 Your Rides
 %table
   %tr
     %th Length
@@ -8,8 +8,8 @@
     %th
   - @rides.each do |ride|
     %tr
-      %td= ride.length
-      %td= ride.duration
+      %td== #{ride.length} #{kms_or_miles}
+      %td== #{ride.duration} minutes
       %td= fmt_time(ride.time)
       %td= fmt_date(ride.date)
       %td= link_to 'Edit', edit_ride_path(ride)
