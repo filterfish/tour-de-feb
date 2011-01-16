@@ -8,11 +8,11 @@
         - @ride.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.label :length
+    = f.label :length, "Length (in #{kms_or_miles})"
     %br/
     = f.text_field :length
   .field
-    = f.label :duration
+    = f.label :duration, "Duration (in minutes)"
     %br/
     = f.text_field :duration
   .field

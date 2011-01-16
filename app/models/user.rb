@@ -7,5 +7,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
+  has_one :preference
   has_one :rides
+
+  after_create :create_preferences
+
+  def create_preferences
+    self.preference = Preference.new
+  end
 end
