@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Length:
+  = @ride.length
+%p
+  %b Time:
+  = @ride.time
+%p
+  %b Date:
+  = @ride.date
+= link_to 'Edit', edit_ride_path(@ride)
+|
+\#{link_to 'Back', rides_path}

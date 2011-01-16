@@ -1,0 +1,18 @@
+%h1 Listing rides
+%table
+  %tr
+    %th Length
+    %th Time
+    %th Date
+    %th
+    %th
+    %th
+  - @rides.each do |ride|
+    %tr
+      %td= ride.length
+      %td= ride.time
+      %td= ride.date
+      %td= link_to 'Show', ride
+      %td= link_to 'Edit', edit_ride_path(ride)
+%br/
+= link_to 'New Ride', new_ride_path
