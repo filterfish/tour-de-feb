@@ -12,12 +12,16 @@
     %br/
     = f.text_field :length
   .field
+    = f.label :duration
+    %br/
+    = f.text_field :duration
+  .field
     = f.label :time
     %br/
-    = f.text_field :time
+    = f.time_select :time
   .field
     = f.label :date
     %br/
-    = f.datetime_select :date
+    = f.date_select :date
   .actions
     = f.submit

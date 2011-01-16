@@ -21,7 +21,7 @@ class RidesController < ApplicationController
     @ride = Ride.new(params[:ride])
 
     if @ride.save
-      redirect_to(@ride, :notice => 'Ride was successfully created.')
+      redirect_to rides_url
     else
       render :action => "new"
     end
@@ -31,7 +31,7 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
 
     if @ride.update_attributes(params[:ride])
-      redirect_to(@ride, :notice => 'Ride was successfully updated.')
+      redirect_to rides_url
     else
       render :action => "edit"
     end

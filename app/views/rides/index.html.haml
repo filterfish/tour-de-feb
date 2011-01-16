@@ -2,17 +2,16 @@
 %table
   %tr
     %th Length
+    %th Duration
     %th Time
     %th Date
-    %th
-    %th
     %th
   - @rides.each do |ride|
     %tr
       %td= ride.length
-      %td= ride.time
-      %td= ride.date
-      %td= link_to 'Show', ride
+      %td= ride.duration
+      %td= fmt_time(ride.time)
+      %td= fmt_date(ride.date)
       %td= link_to 'Edit', edit_ride_path(ride)
 %br/
 = link_to 'New Ride', new_ride_path
