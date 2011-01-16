@@ -6,4 +6,17 @@
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    = yield
+    .container
+      .header
+        #header
+          #title
+            = link_to '', root_url
+          #user_nav
+            - unless user_signed_in?
+              %a{:href => '/auth/twitter'}= "Sign in"
+
+        - [:notice, :warning, :error, :alert, :success].each do |f|
+          - if flash[f]
+            .flash{:class => f.to_s}= flash[f]
+      .main
+        = yield
