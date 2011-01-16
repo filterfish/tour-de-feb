@@ -18,5 +18,7 @@ group :development do
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'webrat'
+  gem 'hpricot'
+  gem 'ruby_parser'
 end
 
