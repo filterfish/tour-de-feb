@@ -30,24 +30,38 @@ body {
   font-size: 13px;
   line-height: 18px; }
 
-div {
-  .container {
-    background-color: white; }
-    #header {
-      height: 72px;
-      margin: 0px 26px;
-      min-width: 890px;
-      background: url(../images/logo.png) no-repeat 0 100%;
+.container {
+  width: 890px;
+  margin-left: auto;
+  margin-right: auto;
 
 
-      #title {
-        a {
-          color: #007d96;
-          margin-left: 10px;
-          padding: 1ex 0ex;
-          font-size: 40pt;
-          float: left;
-          text-decoration: none; } } } }
+  #header {
+    margin-left: auto;
+    margin-right: auto;
+    height: 110px;
+    background: url(../images/logo.png) no-repeat 0 100%;
+
+
+    #title {
+      a {
+        color: #0e0a0b;
+        margin: 35px 0 0 100px;
+        padding: 1ex 0ex;
+        font-family: Lucida Grande,sans-serif;
+        font-size: 40pt;
+        float: left;
+        text-decoration: none; } }
+    #user_nav {
+      float: right;
+      a {
+        color: gray;
+        text-decoration: none;
+        font-size: 9pt;
+      }
+    }
+  }
+}
 
 .user-details {
   margin: 10px 10px 40px 26px;
@@ -58,12 +72,7 @@ div {
     float: left; }
   .bio {
     padding: 0px;
-    #user_nav {
-      float: right;
-      a {
-        color: gray;
-        text-decoration: none;
-        font-size: 9pt; } } } }
+      } }
 
 .article-group {
 
