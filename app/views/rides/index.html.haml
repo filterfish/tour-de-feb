@@ -1,15 +1,24 @@
 %h1 Your Rides
 %table
   %tr
-    %th Length
+    %th Distance
     %th Duration
+    %th Cummulative distance
+    %th Cummulative duration
     %th Time
     %th Date
     %th
+
+  - cummulative_distance = 0
+  - cummulative_duration = 0
   - @rides.each do |ride|
+    - cummulative_distance += ride.length
+    - cummulative_duration += ride.duration
     %tr
       %td== #{ride.length} #{kms_or_miles}
       %td== #{ride.duration} minutes
+      %td== #{cummulative_distance} #{kms_or_miles}
+      %td== #{cummulative_duration} #{kms_or_miles}
       %td= fmt_time(ride.time)
       %td= fmt_date(ride.date)
       %td= link_to 'Edit', edit_ride_path(ride)
