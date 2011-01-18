@@ -2,11 +2,7 @@ class RidesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @rides = Ride.all
-  end
-
-  def show
-    @ride = Ride.find(params[:id])
+    @rides = current_user.rides.all
   end
 
   def new
@@ -14,11 +10,11 @@ class RidesController < ApplicationController
   end
 
   def edit
-    @ride = Ride.find(params[:id])
+    @ride = current_user.rides.find(params[:id])
   end
 
   def create
-    @ride = Ride.new(params[:ride])
+    @ride = current_user.rides.new(params[:ride])
 
     if @ride.save
       redirect_to rides_url
@@ -28,7 +24,7 @@ class RidesController < ApplicationController
   end
 
   def update
-    @ride = Ride.find(params[:id])
+    @ride = current_user.rides.find(params[:id])
 
     if @ride.update_attributes(params[:ride])
       redirect_to rides_url
