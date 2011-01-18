@@ -22,10 +22,5 @@
         - if flash[f]
           .flash{:class => f.to_s}= flash[f]
 
-      .main
-        - if user_signed_in?
-          .user-details
-            .bio
-
-
+      #main
         = yield
