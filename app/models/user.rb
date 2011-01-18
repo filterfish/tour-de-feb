@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_one :preference
-  has_one :rides
+  has_many :rides
 
   after_create :create_preferences
 
