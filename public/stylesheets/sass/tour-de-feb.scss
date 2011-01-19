@@ -41,7 +41,6 @@ body {
     height: 110px;
     background: url(../images/logo.png) no-repeat 0 100%;
 
-
     #title {
       a {
         color: #0e0a0b;
@@ -131,4 +130,39 @@ body {
 
 #error_explanation h2, #error_explanation p {
   display: none;
+}
+
+.actions {
+  margin: 25px 0;
+}
+
+.field {
+  input, textarea, select {
+  margin: 5px 0 0 0;
+  border: 1px solid #cccccc;
+  -moz-box-shadow: 0 0 10px #eeeeee inset;
+  &.button {
+    padding: 2px 5px;
+    margin: 0;
+    color: white;
+    background-color: #498ce2;
+    border: 1px solid #eeeeee;
+    cursor: pointer;
+    text-shadow: 0 0 6px #eeeeee;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 0 6px #cccccc;
+    -webkit-box-shadow: 0 0 6px #cccccc; }
+  &.checkbox {
+    margin: 5px 0;
+    border: none;
+    padding: 0; }
+  &.date {
+    margin: 5px 0 0 0; } }
+
+  margin: 5px 0;
+}
+
+.separator {
+  height: 10px;
 }
