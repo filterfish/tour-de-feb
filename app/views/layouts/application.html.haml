@@ -8,8 +8,8 @@
   %body
     .container
       #header
-        #title
-          = link_to '', root_url
+        %a{:href => root_url, :id => 'header'}
+          <img src="../images/logo.png"></img>
         #user_nav
           - if user_signed_in?
             =link_to current_user.email, edit_preferences_path
