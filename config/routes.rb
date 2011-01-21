@@ -5,5 +5,7 @@ TourDeFeb::Application.routes.draw do
   resources :rides
   resource :preferences, :only => [:edit, :update]
 
-  root :to => "rides#index"
+  match '/index' => 'home#index'
+
+  root :to => "home#index"
 end
