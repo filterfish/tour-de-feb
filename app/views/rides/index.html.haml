@@ -7,18 +7,17 @@
     %th Cummulative duration
     %th Time
     %th Date
-    %th
 
   - cummulative_distance = 0
   - cummulative_duration = 0
   - @rides.each do |ride|
-    - cummulative_distance += ride.length
-    - cummulative_duration += ride.duration
+    - cummulative_distance += (ride.length || 0)
+    - cummulative_duration += (ride.duration || 0)
     %tr
-      %td== #{ride.length} #{kms_or_miles}
-      %td== #{ride.duration} minutes
+      %td= (ride.length) ? "#{ride.length} #{kms_or_miles}" : "n/s"
+      %td= (ride.duration) ? "#{ride.duration} minutes" : "n/s"
       %td== #{cummulative_distance} #{kms_or_miles}
-      %td== #{cummulative_duration} #{kms_or_miles}
+      %td== #{(Time.mktime(0) + (cummulative_duration * 60)).strftime('%H:%M')} h:m
       %td= fmt_time(ride.time)
       %td= fmt_date(ride.date)
       %td= link_to 'Edit', edit_ride_path(ride)
