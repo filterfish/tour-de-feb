@@ -8,13 +8,13 @@
   %body
     .container
       #header
-        %a{:href => root_url, :id => 'header'}
+        %a{:href => ((user_signed_in?) ? rides_url : root_url), :id => 'header'}
           <img src="../images/logo.png"></img>
         #user_nav
           - if user_signed_in?
-            =link_to current_user.email, edit_preferences_path
+            =link_to current_user.email, edit_preferences_path, :title => 'Preferences'
             |
-            = link_to 'logout', destroy_user_session_path
+            = link_to 'logout', destroy_user_session_path, :title => 'Logout'
           - else
             %a{:href => new_user_session_url}= "Sign in"
 
