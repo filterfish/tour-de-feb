@@ -3,7 +3,7 @@ class CreatePreferences < ActiveRecord::Migration
     create_table :preferences do |t|
       t.integer :user_id
       t.string :time_zone, :default => 'Sydney'
-      t.boolean :metric, :default => 'metric'
+      t.boolean :metric, :default => true
 
       t.timestamps
     end
