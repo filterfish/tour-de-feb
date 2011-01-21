@@ -1,30 +1,33 @@
-%h1
-  Welcome to The Tour de Feb.
+%h1 Welcome to The Tour de Feb.
+
 
 %p
   Tour de Feb aims to get people to cycle every day in February. It was
-  inspired by Janathon but given that I cycle but don't run I thought I'd
+  inspired by
+  %a{:href => 'http://www.janathon.com/'}== Janathon
+  but given I cycle and don't run, I thought I'd
   start a cycling version.
 
 %p
-  My main motivation for starting this is that I enjoy cycling but getting 
-  on the bike can sometimes be a bit of a challenge! So to ensure that I
-  actually get on my bike, at least for one month, I thought I'd start this
-  site.
+  My main motivation for starting Tour de Feb is that, while I enjoy
+  cycling, getting on the bike can sometimes be a challenge! So to ensure
+  I actually get on my bike more regularly, at least for one month,
+  I thought I'd start this site.
 
 %p
   There are some rules but they are very simple:
 
 %ul
   %li you must cycle every day,
-  %li you must record how far (or how long) you cycled and
-  %li you must either blog or tweet.
+  %li you must record how far (or how long) you cycled on the Tour de Feb website
+  %li you must either blog or tweet about your ride
 
 %p
-  The aim isn't to ride as far as you possibly can but to pick a goal and
-  try to achieve it. That goal might be to cycle 100 kms a week but it
-  might be to learn better handling skills in which case you might only
-  travel a few kms but you might spend a fair amount of time doing this.
+  The aim isn't to ride as far as you possibly can but instead to pick a
+  goal for the month and try to achieve it.  That goal might be to cycle
+  100 kms a week, but it might also be to learn better bike handling
+  skills, in which case you might only travel a few kms but spend a fair
+  amount of time doing this. Your goal is up to you.
 
 %h2 Prizes
 
@@ -33,21 +36,30 @@
   actually have any prizes but I'll give it a go.
 
 %p
-  To win the prize (even if it's just the indignation of everyone else!)
-  you have to have ridden every day, written up what you did and that you've
-  improved on your goals. Your write up will contribute, so funny, poignant, etc
-  is good.
+  To win the prize (even if it's just the indignation of everyone
+  else!) you have to cycle every day; record your ride on the Tour de
+  Feb website; and blog or tweet (using the hashtag #tourdefeb) about
+  your ride and how you're improving on your goals
 
-%h2 Instructions
+%p
+  Note that your write up will contribute to your prize eligibility -
+  so funny, poignant, helpful, etc is good.
+
+%h2
+  Instructions
 
 %ul
   %li== Sign up #{link_to 'here', new_user_registration_url}
-  %li when you've finished your ride add the details (time or distance)
-  %li write a blog post or tweet.
+  %li when you've finished your ride add the details (time and/or distance)
+  %li write a blog post or tweet using the hashtag #tourdefeb
 
 %p
-  == I've set up a #{link_to 'twitter account', 'http://twitter.com/TourDeFeb'} so if you add your twitter details I'll
-  follow you.
+  I've set up a #{link_to 'twitter account', 'http://twitter.com/TourDeFeb'}
+  so if you add your twitter details I'll follow you.
 
+%p
+  If you want to contact me you can either #{mail_to 'rgh@tour-de-feb.org', 'email'}
+  or #{link_to 'tweet', 'http://twitter.com/TourDeFeb'} me. I will make annouchments
+  via Twitter as well so you might to follow #{link_to '@TourDeFeb', 'http://twitter.com/TourDeFeb'}.
 %p
   And that's about it. So sign up and start peddling!
