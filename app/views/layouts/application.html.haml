@@ -14,6 +14,10 @@
           - if user_signed_in?
             =link_to current_user.email, edit_preferences_path, :title => 'Preferences'
             |
+            - if current_user.group
+              %a{:href => url_for(:controller => :groups, :name => current_user.group.name), :title => "#{current_user.group.name} group"}
+                = current_user.group.name
+              |
             = link_to 'logout', destroy_user_session_path, :title => 'Logout'
           - else
             %a{:href => new_user_session_url}= "Sign in"
