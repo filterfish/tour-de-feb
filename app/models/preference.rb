@@ -2,7 +2,7 @@ class Preference < ActiveRecord::Base
   belongs_to :user
 
   def group=(group)
-    if group
+    if group && group.length > 0
       g = Group.find_or_create_by_name(group)
       user.group_id = g.id
     else
