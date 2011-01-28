@@ -12,12 +12,16 @@
     %br/
     = f.text_area :goal
   .field
+    = f.label :group
+    %br/
+    = f.text_field :group
+  .field
     = f.label :time_zone
     %br/
     = f.time_zone_select :time_zone
   .field
     = f.label :metric, "Metric/Imperial"
     %br/
-    = f.select :metric, [['Metric', true], ['Imperial', false]]
+    = f.select :metric, [['Metric', 'km'], ['Imperial', 'mile']]
   .actions
     = f.submit

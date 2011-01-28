@@ -7,7 +7,7 @@ module ApplicationHelper
     date.strftime("%H:%M")
   end
 
-  def kms_or_miles
-    (current_user.preference.metric) ? "kms" : "miles"
+  def hours_minutes(duration)
+    (Time.mktime(0) + (duration * 60)).strftime('%H:%M')
   end
 end
