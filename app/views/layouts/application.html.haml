@@ -9,7 +9,7 @@
     .container
       #header
         %a{:href => ((user_signed_in?) ? rides_url : root_url), :id => 'header'}
-          <img src="../images/logo.png"></img>
+          <img src="/images/logo.png"></img>
         #user_nav
           - if user_signed_in?
             =link_to current_user.email, '/users/edit', :title => 'Preferences'
