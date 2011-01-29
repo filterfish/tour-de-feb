@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     rides.sum('duration')
   end
 
+  def cummulative_speed
+    (rides.sum('distance') / rides.sum('duration')) * 60 rescue 'n/s'
+  end
+
   def update_with_password(params={})
     if params[:password].blank?
       params.delete(:password)

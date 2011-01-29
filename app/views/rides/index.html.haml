@@ -3,6 +3,7 @@
   %tr
     %th Distance
     %th Duration
+    %th Speed
     %th Cummulative distance
     %th Cummulative duration
     %th Time
@@ -14,10 +15,11 @@
     - cummulative_distance += (ride.distance || 0)
     - cummulative_duration += (ride.duration || 0)
     %tr
-      %td= (ride.distance) ? "#{ride.distance} #{current_user.preference.metric}": "n/s"
-      %td= (ride.duration) ? "#{ride.duration} minutes" : "n/s"
-      %td== #{cummulative_distance} #{current_user.preference.metric}
-      %td== #{hours_minutes(cummulative_duration)} h:m
+      %td= (ride.distance) ? "#{pluralize(ride.distance, current_user.preference.metric)}": "n/s"
+      %td= (ride.duration) ? "#{hours_minutes(ride.duration)}" : "n/s"
+      %td= (ride.duration && ride.distance) ? "#{pluralize(round((ride.distance / ride.duration) * 60), current_user.preference.metric)}/hr" : "n/s"
+      %td= pluralize(cummulative_distance, current_user.preference.metric)
+      %td= hours_minutes(cummulative_duration)
       %td= fmt_time(ride.time)
       %td= fmt_date(ride.date)
       %td= link_to 'Edit', edit_ride_path(ride)

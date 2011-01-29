@@ -4,15 +4,24 @@
     %th Email
     %th Cummulative duration
     %th{:span => (@kms_miles_or_both == :both) ? 2 : 1} Cummulative distance
+    %th{:span => (@kms_miles_or_both == :both) ? 2 : 1} Average Speed
 
     - @users.each do |user|
       %tr
         %td= user.email
-        %td== #{hours_minutes(user.cummulative_duration)} h:m
+        %td= hours_minutes(user.cummulative_duration)
         - if @kms_miles_or_both == :both
-          %td== #{user.cummulative_distance} kms
-          %td== #{user.cummulative_distance / 1.6} miles
+          %td= pluralize(user.cummulative_distance, 'kms')
+          %td= pluralize(user.cummulative_distance / 1.6, 'miles')
         - elsif @kms_miles_or_both == :metric
-          %td== #{user.cummulative_distance} #{user.preference.metric}
+          %td= pluralize(user.cummulative_distance, user.preference.metric)
         -else
-          %td== #{user.cummulative_distance * 1.6} #{user.preference.metric}
+          %td= pluralize(round(user.cummulative_distance * 1.6), user.preference.metric)
+
+        - if @kms_miles_or_both == :both
+          %td= pluralize(round(user.cummulative_speed), 'kms')
+          %td= pluralize(round(user.cummulative_speed / 1.6), 'miles')
+        - elsif @kms_miles_or_both == :metric
+          %td= pluralize(round(user.cummulative_speed), user.preference.metric)
+        -else
+          %td= pluralize(round(user.cummulative_speed * 1.6), user.preference.metric)
