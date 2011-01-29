@@ -1,24 +1,44 @@
 %h2
-  Edit #{resource_name.to_s.humanize}
+  Preferences
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
   .field
     = f.label :email
+    %br/
     = f.text_field :email
+
+    %br/
+    = f.fields_for :preference do |preference_f|
+      .field
+        = preference_f.label :goal
+        %br/
+        = preference_f.text_area :goal
+      .field
+        = preference_f.label :group
+        %br/
+        = preference_f.text_field :group
+      .field
+        = preference_f.label :time_zone
+        %br/
+        = preference_f.time_zone_select :time_zone
+      .field
+        = preference_f.label :metric, "Metric/Imperial"
+        %br/
+        = preference_f.select :metric, [['Metric', 'km'], ['Imperial', 'mile']]
+      .actions
+
+  .separator
+  .separator
+
   .field
     = f.label :password
     %i (leave blank if you don't want to change it)
+    %br/
     = f.password_field :password
   .field
     = f.label :password_confirmation
+    %br/
     = f.password_field :password_confirmation
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    = f.password_field :current_password
+
   .field
     =f.submit "Update"
-
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.

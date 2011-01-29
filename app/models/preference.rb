@@ -8,6 +8,8 @@ class Preference < ActiveRecord::Base
     else
       user.group_id = nil
     end
+
+    # There *really* ought to be some error checking here.
     user.save!
   end
 

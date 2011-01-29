@@ -12,10 +12,10 @@
           <img src="../images/logo.png"></img>
         #user_nav
           - if user_signed_in?
-            =link_to current_user.email, edit_preferences_path, :title => 'Preferences'
+            =link_to current_user.email, '/users/edit', :title => 'Preferences'
             |
             - if current_user.group
-              %a{:href => url_for(:controller => :groups, :name => current_user.group.name), :title => "#{current_user.group.name} group"}
+              %a{:href => "/groups/#{current_user.group.name}", :title => "#{current_user.group.name} group"}
                 = current_user.group.name
               |
             = link_to 'logout', destroy_user_session_path, :title => 'Logout'
