@@ -8,13 +8,16 @@
         - @ride.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.label :distance, "Length (in #{current_user.preference.metric})"
+    = f.label :distance
     %br/
-    = f.text_field :distance
+    = f.text_field :distance, :class => 'distance'
+    (#{current_user.preference.metric})
   .field
-    = f.label :duration, "Duration (in minutes)"
+    = f.label :duration
     %br/
-    = f.text_field :duration
+    = f.text_field :duration_hours, :class => 'time-left'
+    = f.text_field :duration_minutes, :class => 'time-right'
+    (hours, minutes)
   .separator
   .field
     = f.label :time
