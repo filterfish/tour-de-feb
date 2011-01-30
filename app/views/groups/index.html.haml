@@ -21,7 +21,14 @@
         - if @kms_miles_or_both == :both
           %td= pluralize(round(user.cummulative_speed), 'kms')
           %td= pluralize(round(user.cummulative_speed / 1.6), 'miles')
+
         - elsif @kms_miles_or_both == :metric
-          %td= pluralize(round(user.cummulative_speed), user.preference.metric)
+          - if user.cummulative_speed > 0
+            %td= pluralize(round(user.cummulative_speed), user.preference.metric)
+          - else
+            %td n/a
         -else
-          %td= pluralize(round(user.cummulative_speed * 1.6), user.preference.metric)
+          - if user.cummulative_speed > 0
+            %td= pluralize(round(user.cummulative_speed * 1.6), user.preference.metric)
+          - else
+            %td n/a
