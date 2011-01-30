@@ -2,6 +2,7 @@ class Ride < ActiveRecord::Base
   belongs_to :user
 
   before_validation :update_time
+  before_save :set_default_time
 
   def validate
     if distance.nil? && duration.nil?
@@ -52,5 +53,9 @@ class Ride < ActiveRecord::Base
 
   def update_time
     self.duration = @hours.to_i * 60 + @minutes.to_i
+  end
+
+  def set_default_time
+    self.date = Time.now if self.date.nil?
   end
 end
