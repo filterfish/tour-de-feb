@@ -1,10 +1,6 @@
 module ApplicationHelper
-  def fmt_date(date)
-    date.strftime("%a %d %b %Y")
-  end
-
-  def fmt_time(date)
-    date.strftime("%H:%M")
+  def fmt_date_time(date)
+    (date) ? date.strftime("%d/%m/%Y &ndash; %H:%M").html_safe : nil
   end
 
   def hours_minutes(duration)

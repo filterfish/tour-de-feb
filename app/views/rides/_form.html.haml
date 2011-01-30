@@ -20,12 +20,11 @@
     (hours, minutes)
   .separator
   .field
-    = f.label :time
-    %br/
-    = f.time_select :time
-  .field
     = f.label :date
     %br/
-    = f.date_select :date
+    = text_field_tag "ride[date]", fmt_date_time(@ride.date), :class => 'date'
+    %br/
+    %span.example
+      eg. 4pm, 1624, two hours ago. Defaults to now.
   .actions
     = f.submit

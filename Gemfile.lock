@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/AaronH/chronic.git
+  revision: 837f2a41f7aa27f22309763be245a90626072ead
+  specs:
+    aaronh-chronic (0.3.9)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -175,6 +181,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aaronh-chronic (= 0.3.9)!
   cucumber-rails
   devise
   haml

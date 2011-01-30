@@ -177,7 +177,7 @@ body {
       width: 300px;
     }
   }
-  input.distance {
+  input.distance, input.date {
     width: 200px;
   }
   input.time-left {
@@ -186,6 +186,10 @@ body {
   }
   input.time-right {
     width: 94px;
+  }
+
+  .example {
+    font-size: 90%;
   }
 }
 

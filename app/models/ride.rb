@@ -1,14 +1,16 @@
 class Ride < ActiveRecord::Base
   belongs_to :user
 
-  validates_presence_of :date
-
-  before_save :update_time
+  before_validation :update_time
 
   def validate
     if distance.nil? && duration.nil?
       errors.add_to_base("You must supply either a distance or duration")
     end
+  end
+
+  def date=(date)
+    write_attribute(:date, Chronic.parse(date))
   end
 
   def distance=(distance)
