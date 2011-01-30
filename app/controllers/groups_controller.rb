@@ -2,10 +2,10 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @group = Group.where(['name = ?', params[:name]]).first
+    @group = Group.where(['name ~* ?', params[:name]]).first
     @users = @group.try(:users)
 
-    if @users && @users.size > 0 && current_user.group.name == params[:name]
+    if @users && @users.size > 0 && current_user.group.name.downcase == params[:name].downcase
       @kms_miles_or_both = get_distance_metric(@users)
     else
       flash[:error] = "Sorry that group doesn't exist"

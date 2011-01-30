@@ -3,7 +3,10 @@ class Preference < ActiveRecord::Base
 
   def group=(group)
     if group && group.length > 0
-      g = Group.find_or_create_by_name(group)
+      g = Group.where(['name ~* ?', group]).first
+      if g.nil?
+        g = Group.create(:name => group)
+      end
       user.group_id = g.id
     else
       user.group_id = nil
