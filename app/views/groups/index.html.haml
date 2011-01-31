@@ -1,26 +1,26 @@
 %h1== Group #{@group.name}
+
+- colspan = (@kms_miles_or_both == :both) ? 2 : 1
 %table
   %tr
     %th Email
     %th Cummulative duration
-    %th{:span => (@kms_miles_or_both == :both) ? 2 : 1} Cummulative distance
-    %th{:span => (@kms_miles_or_both == :both) ? 2 : 1} Average Speed
+    %th Cummulative distance
+    %th Average Speed
 
     - @users.each do |user|
       %tr
         %td= user.email
         %td= hours_minutes(user.cummulative_duration)
         - if @kms_miles_or_both == :both
-          %td= pluralize(user.cummulative_distance, 'kms')
-          %td= pluralize(user.cummulative_distance / 1.6, 'miles')
+          %td== #{pluralize(user.cummulative_distance, 'kms')} &nbsp; (#{pluralize(user.cummulative_distance / 1.6, 'miles')})
         - elsif @kms_miles_or_both == :metric
           %td= pluralize(user.cummulative_distance, user.preference.metric)
         -else
           %td= pluralize(round(user.cummulative_distance * 1.6), user.preference.metric)
 
         - if @kms_miles_or_both == :both
-          %td= pluralize(round(user.cummulative_speed), 'kms')
-          %td= pluralize(round(user.cummulative_speed / 1.6), 'miles')
+          %td== #{pluralize(round(user.cummulative_speed), 'kms/hour')} &nbsp; (#{pluralize(round(user.cummulative_speed / 1.6), 'miles/hour')})
 
         - elsif @kms_miles_or_both == :metric
           - if user.cummulative_speed > 0
