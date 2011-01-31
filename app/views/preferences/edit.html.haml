@@ -1,2 +1,15 @@
 %h1 Preferences
-= render 'form'
+= form_for(@preference, :url => preferences_path) do |f|
+  - if @preference.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@preference.errors.count, "error")
+        prohibited this preference from being saved:
+      %ul
+        - @preference.errors.full_messages.each do |msg|
+          %li= msg
+
+  = render :partial => 'form', :locals => {:f => f}
+
+  .actions
+    = f.submit

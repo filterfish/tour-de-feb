@@ -7,25 +7,8 @@
     %br/
     = f.text_field :email
 
-    %br/
-    = f.fields_for :preference do |preference_f|
-      .field
-        = preference_f.label :goal, :title => "A goal you would like to set yourself. It could be anything: become more confident, get into the habit of riding, ride 1000 kms a day ..."
-        %br/
-        = preference_f.text_area :goal
-      .field
-        = preference_f.label :group, :title => "Join a group. All users in the group will be able to see each others totals"
-        %br/
-        = preference_f.text_field :group
-      .field
-        = preference_f.label :time_zone, :title => "Your current time zone"
-        %br/
-        = preference_f.time_zone_select :time_zone
-      .field
-        = preference_f.label :metric, "Metric/Imperial", :title => "KMs or miles"
-        %br/
-        = preference_f.select :metric, [['Metric', 'km'], ['Imperial', 'mile']]
-      .actions
+  = f.fields_for :preference do |preference_f|
+    = render :partial => 'preferences/form', :locals => { :f => preference_f }
 
   .separator
   .separator

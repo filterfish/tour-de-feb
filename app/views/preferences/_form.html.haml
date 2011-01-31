@@ -1,27 +1,21 @@
-= form_for(@preference, :url => preferences_path) do |f|
-  - if @preference.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@preference.errors.count, "error")
-        prohibited this preference from being saved:
-      %ul
-        - @preference.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :goal
-    %br/
-    = f.text_area :goal
-  .field
-    = f.label :group
-    %br/
-    = f.text_field :group
-  .field
-    = f.label :time_zone
-    %br/
-    = f.time_zone_select :time_zone
-  .field
-    = f.label :metric, "Metric/Imperial"
-    %br/
-    = f.select :metric, [['Metric', 'km'], ['Imperial', 'mile']]
-  .actions
-    = f.submit
+.field
+  = f.label :blog_or_twitter, 'Blog address or twitter handle', :title => "Either you blog address or twitter handle"
+  %br/
+  = f.text_field :blog_or_twitter
+.field
+  = f.label :goal, :title => "A goal you would like to set yourself. It could be anything: become more confident, get into the habit of riding, ride 1000 kms a day ..."
+  %br/
+  = f.text_area :goal
+.field
+  = f.label :group, :title => "Join a group. All users in the group will be able to see each others totals"
+  %br/
+  = f.text_field :group
+.field
+  = f.label :time_zone, :title => "Your current time zone"
+  %br/
+  = f.time_zone_select :time_zone
+.field
+  = f.label :metric, "Metric/Imperial", :title => "KMs or miles"
+  %br/
+  = f.select :metric, [['Metric', 'km'], ['Imperial', 'mile']]
+.actions
