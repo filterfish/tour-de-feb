@@ -13,9 +13,9 @@
         %td= user.email
         %td= hours_minutes(user.cummulative_duration)
         - if @kms_miles_or_both == :both
-          %td== #{pluralize(user.cummulative_distance, 'kms')} &nbsp; (#{pluralize(user.cummulative_distance / 1.6, 'miles')})
+          %td== #{pluralize(user.cummulative_distance, 'kms')} &nbsp; (#{pluralize(round(user.cummulative_distance / 1.6), 'miles')})
         - elsif @kms_miles_or_both == :metric
-          %td= pluralize(user.cummulative_distance, user.preference.metric)
+          %td= pluralize(round(user.cummulative_distance), user.preference.metric)
         -else
           %td= pluralize(round(user.cummulative_distance * 1.6), user.preference.metric)
 
