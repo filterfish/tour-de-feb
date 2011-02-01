@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def fmt_time(time)
-    (time) ? time.in_time_zone.strftime('%l:%M%P') : nil
+    (time) ? time.strftime('%l:%M%P') : nil
   end
 
   def hours_minutes(duration)
