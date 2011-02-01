@@ -20,7 +20,7 @@ class Ride < ActiveRecord::Base
   end
 
   def time=(time)
-    time = (time.nil? || time == '') Time.now.utc : Time.parse(time).utc
+    time = (time.nil? || time == '') ? Time.now.utc : Time.parse(time).utc
     write_attribute(:time, time)
   end
 
