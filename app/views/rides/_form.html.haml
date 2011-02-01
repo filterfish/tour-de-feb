@@ -20,11 +20,12 @@
     (hours, minutes)
   .separator
   .field
-    = f.label :date
+    = f.label :date, "Date/time"
     %br/
-    = text_field_tag "ride[date]", fmt_date_time(@ride.date), :class => 'date'
+    = text_field_tag "ride[date]", (@ride.date) ? fmt_date(@ride.date) : fmt_date(Time.now), :class => 'time-left'
+    = text_field_tag "ride[time]", fmt_time(@ride.time), :class => 'time-left'
     %br/
     %span.example
-      eg. 4pm, 1624, two hours ago. Defaults to now.
+      (Day/Month/Year)
   .actions
     = f.submit

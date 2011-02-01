@@ -10,10 +10,6 @@ class Ride < ActiveRecord::Base
     end
   end
 
-  def date=(date)
-    write_attribute(:date, Chronic.parse(date))
-  end
-
   def distance=(distance)
     write_attribute(:distance, (user.preference.metric == 'km') ? distance : distance * 1.6)
   end
@@ -21,6 +17,11 @@ class Ride < ActiveRecord::Base
   def distance
     d = read_attribute(:distance)
     (user.preference.metric == 'km') ? d : d / 1.6
+  end
+
+  def time=(time)
+    time = (time.nil? || time == '') Time.now.utc : Time.parse(time).utc
+    write_attribute(:time, time)
   end
 
   def duration_hours=(hours)
@@ -52,10 +53,14 @@ class Ride < ActiveRecord::Base
   private
 
   def update_time
-    self.duration = @hours.to_i * 60 + @minutes.to_i
+    if @hours.to_i == 0 && @minutes.to_i == 0
+      self.duration = nil
+    else
+      self.duration = @hours.to_i * 60 + @minutes.to_i
+    end
   end
 
   def set_default_time
-    self.date = Time.now if self.date.nil?
+    self.time = Time.now.utc if self.time.nil?
   end
 end
