@@ -1,6 +1,7 @@
 %h1== Group #{@group.name}
 
-- colspan = (@kms_miles_or_both == :both) ? 2 : 1
+- multiplier = (current_user.preference.metric == 'km') ? 1.0 : 1.6
+
 %table
   %tr
     %th Email
@@ -12,23 +13,10 @@
       %tr
         %td= user.email
         %td= hours_minutes(user.cummulative_duration)
-        - if @kms_miles_or_both == :both
-          %td== #{pluralize(user.cummulative_distance, 'kms')} &nbsp; (#{pluralize(round(user.cummulative_distance / 1.6), 'miles')})
-        - elsif @kms_miles_or_both == :metric
-          %td= pluralize(round(user.cummulative_distance), user.preference.metric)
-        -else
-          %td= pluralize(round(user.cummulative_distance * 1.6), user.preference.metric)
 
-        - if @kms_miles_or_both == :both
-          %td== #{pluralize(round(user.cummulative_speed), 'kms/hour')} &nbsp; (#{pluralize(round(user.cummulative_speed / 1.6), 'miles/hour')})
+        %td= pluralize(round(user.cummulative_distance / multiplier), current_user.preference.metric)
 
-        - elsif @kms_miles_or_both == :metric
-          - if user.cummulative_speed > 0
-            %td= pluralize(round(user.cummulative_speed), user.preference.metric)
-          - else
-            %td n/a
-        -else
-          - if user.cummulative_speed > 0
-            %td= pluralize(round(user.cummulative_speed * 1.6), user.preference.metric)
-          - else
-            %td n/a
+        - if user.cummulative_speed > 0
+          %td= pluralize(round(user.cummulative_speed / multiplier), "#{current_user.preference.metric}/hr")
+        - else
+          %td n/a
