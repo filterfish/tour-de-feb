@@ -11,6 +11,8 @@ class RidesController < ApplicationController
 
   def edit
     @ride = current_user.rides.find(params[:id])
+    # Fucked if I know why this works.
+    @ride[:distance] = @ride.distance
   end
 
   def create

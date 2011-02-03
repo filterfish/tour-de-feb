@@ -11,12 +11,13 @@ class Ride < ActiveRecord::Base
   end
 
   def distance=(distance)
-    write_attribute(:distance, (user.preference.metric == 'km') ? distance : distance * 1.6)
+    write_attribute(:distance, (user.preference.metric == 'km') ? distance : distance.to_f * 1.6)
   end
 
+  # This doesn't get called when populting a form. WTF. See *HACK* in controller.
   def distance
     d = read_attribute(:distance)
-    (user.preference.metric == 'km') ? d : d / 1.6
+    (user.preference.metric == 'km') ? d : (d.to_f / 1.6)
   end
 
   def time=(time)
