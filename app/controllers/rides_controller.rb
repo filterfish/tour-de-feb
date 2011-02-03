@@ -2,7 +2,7 @@ class RidesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @rides = current_user.rides.order(:date).all
+    @rides = current_user.rides.order(:date,:time).all
   end
 
   def new
