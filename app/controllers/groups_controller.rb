@@ -3,7 +3,8 @@ class GroupsController < ApplicationController
 
   def index
     @group = Group.where(['name ~* ?', params[:name]]).first
-    @users = @group.try(:users)
+
+    @users = @group.users.order(:email) if @group
 
     if @users && @users.size > 0 && current_user.group.name.downcase == params[:name].downcase
       @kms_miles_or_both = get_distance_metric(@users)
