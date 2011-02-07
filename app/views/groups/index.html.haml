@@ -5,8 +5,8 @@
 %table
   %tr
     %th Email
-    %th Cummulative duration
-    %th Cummulative distance
+    %th Cumulative duration
+    %th Cumulative distance
     %th Average Speed
 
     - @users.each do |user|
@@ -14,9 +14,9 @@
         %td= user.email
         %td= hours_minutes(user.cummulative_duration)
 
-        %td= pluralize(round(user.cummulative_distance / multiplier), current_user.preference.metric)
+        %td== #{round(user.cummulative_distance / multiplier)} #{current_user.preference.metric}
 
         - if user.cummulative_speed > 0
-          %td= pluralize(round(user.cummulative_speed / multiplier), "#{current_user.preference.metric}/hr")
+          %td== #{round(user.cummulative_speed / multiplier)} #{current_user.preference.metric}/hr
         - else
           %td n/a
