@@ -180,16 +180,16 @@ body {
   input.distance, input.date {
     width: 200px;
   }
-  input.time-left {
+  input.time {
     width: 94px;
     margin: 0 5px 0 0;
-  }
-  input.time-right {
-    width: 94px;
   }
 
   .example {
     font-size: 90%;
+    width: 98px;
+    margin: 0 7px 0 0;
+    float: left;
   }
 }
 

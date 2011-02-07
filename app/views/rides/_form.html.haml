@@ -15,17 +15,23 @@
   .field
     = f.label :duration
     %br/
-    = f.text_field :duration_hours, :class => 'time-left'
-    = f.text_field :duration_minutes, :class => 'time-right'
-    (hours, minutes)
+    = f.text_field :duration_hours, :class => 'time'
+    = f.text_field :duration_minutes, :class => 'time'
+    %br/
+    %span.example
+      (Hours)
+    %span.example
+      (Minutes)
   .separator
   .field
     = f.label :date, "Date/time"
     %br/
-    = text_field_tag "ride[date]", (@ride.date) ? fmt_date(@ride.date) : fmt_date(Time.now), :class => 'time-left'
-    = text_field_tag "ride[time]", fmt_time(@ride.time), :class => 'time-left'
+    = text_field_tag "ride[date]", (@ride.date) ? fmt_date(@ride.date) : fmt_date(Time.now), :class => 'time'
+    = text_field_tag "ride[time]", fmt_time(@ride.time), :class => 'time'
     %br/
-    %span.example
+    %div.example
       (Day/Month/Year)
+    %div.example
+      (hh:mm)
   .actions
     = f.submit
