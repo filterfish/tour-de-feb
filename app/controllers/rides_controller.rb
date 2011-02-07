@@ -28,9 +28,14 @@ class RidesController < ApplicationController
   def update
     @ride = current_user.rides.find(params[:id])
 
-    if @ride.update_attributes(params[:ride])
-      redirect_to rides_url
-    else
+    begin
+      if @ride.update_attributes(params[:ride])
+        redirect_to rides_url
+      else
+        render :action => "edit"
+      end
+    rescue
+      flash[:error] = "Invalid time."
       render :action => "edit"
     end
   end
