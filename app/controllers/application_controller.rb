@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :set_time_zone
+  around_filter :set_time_zone
   layout 'application'
 
   def after_sign_in_path_for(resource_or_scope)
@@ -16,10 +16,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_time_zone
-    if current_user
-      Time.zone = current_user.preference.time_zone || "UTC"
-    else
-      Time.zone = "UTC"
+    begin
+      old_time_zone = Time.zone
+      Time.zone = current_user.preference.time_zone if current_user
+      yield
     end
+  ensure
+    Time.zone = old_time_zone
   end
 end
